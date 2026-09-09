@@ -216,7 +216,7 @@ jobs:
           print(f"Contributors: {contributor_count}")
           PY
 
-      - name: Commit stats
+           - name: Commit stats
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -225,7 +225,8 @@ jobs:
 
           if git diff --cached --quiet; then
             echo "No changes"
-          else
-            git commit -m "Update GitHub stats"
-            git push
+            exit 0
           fi
+
+          git commit -m "Update GitHub stats"
+          git push origin HEAD:main
