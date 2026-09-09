@@ -45,7 +45,20 @@ jobs:
                   return json.load(response)
 
           # --------------------------------------------------
-          # Get repositories
+          # Get GitHub user ID
+          # --------------------------------------------------
+
+          user = gh_api(f"/users/{USERNAME}")
+          USER_ID = str(user["id"])
+
+          # GitHub's modern noreply addresses
+          MY_EMAILS = {
+              f"{USER_ID}+{USERNAME}@users.noreply.github.com",
+              f"{USERNAME}@users.noreply.github.com",
+          }
+
+          # --------------------------------------------------
+          # Get public repositories
           # --------------------------------------------------
 
           repos = []
@@ -63,7 +76,7 @@ jobs:
               repos.extend(data)
               page += 1
 
-          # Ignore forked repositories
+          # Ignore forks
           repos = [
               repo for repo in repos
               if not repo.get("fork", False)
@@ -71,26 +84,24 @@ jobs:
 
           repo_count = len(repos)
 
-          # Total stars on own non-fork repositories
+          # Total stars
           stars = sum(
               repo.get("stargazers_count", 0)
               for repo in repos
           )
 
           # --------------------------------------------------
-          # Count ONLY Kostya's commits
+          # Count commits
           # --------------------------------------------------
 
           commits = 0
 
           for repo in repos:
               name = repo["name"]
-
               page = 1
 
               while True:
                   params = urllib.parse.urlencode({
-                      "author": USERNAME,
                       "per_page": 100,
                       "page": page,
                   })
@@ -105,7 +116,25 @@ jobs:
                   if not data:
                       break
 
-                  commits += len(data)
+                  for commit in data:
+                      author = commit.get("author")
+                      commit_data = commit.get("commit", {})
+                      author_data = commit_data.get("author", {})
+
+                      login = ""
+
+                      if author:
+                          login = author.get("login", "")
+
+                      email = author_data.get("email", "").lower()
+
+                      # Count commit if GitHub linked it to Kostya
+                      # OR the commit uses one of Kostya's noreply emails
+                      if (
+                          login.lower() == USERNAME.lower()
+                          or email in {e.lower() for e in MY_EMAILS}
+                      ):
+                          commits += 1
 
                   if len(data) < 100:
                       break
@@ -113,7 +142,7 @@ jobs:
                   page += 1
 
           # --------------------------------------------------
-          # Find real contributors
+          # Find contributors
           # --------------------------------------------------
 
           contributors = set()
@@ -138,10 +167,6 @@ jobs:
                       login = contributor.get("login")
                       contributor_type = contributor.get("type")
 
-                      # Ignore:
-                      # - Kostya himself
-                      # - GitHub bots
-                      # - accounts without a login
                       if (
                           login
                           and login.lower() != USERNAME.lower()
@@ -195,8 +220,6 @@ jobs:
               github.com/{USERNAME}
             </text>
 
-            <!-- Repositories -->
-
             <text
               x="45"
               y="145"
@@ -217,8 +240,6 @@ jobs:
             >
               {repo_count}
             </text>
-
-            <!-- Stars -->
 
             <text
               x="250"
@@ -241,8 +262,6 @@ jobs:
               {stars}
             </text>
 
-            <!-- Commits -->
-
             <text
               x="450"
               y="145"
@@ -263,8 +282,6 @@ jobs:
             >
               {commits}
             </text>
-
-            <!-- Contributors -->
 
             <text
               x="45"
@@ -302,10 +319,13 @@ jobs:
           with open("stats.svg", "w", encoding="utf-8") as file:
               file.write(svg)
 
-          print(f"Repositories: {repo_count}")
-          print(f"Stars: {stars}")
-          print(f"Your commits: {commits}")
-          print(f"Contributors: {contributor_count}")
+          print("")
+          print("========== GITHUB STATS ==========")
+          print(f"Repositories:  {repo_count}")
+          print(f"Stars:         {stars}")
+          print(f"Your commits:  {commits}")
+          print(f"Contributors:  {contributor_count}")
+          print("==================================")
           PY
 
       - name: Commit stats
