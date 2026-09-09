@@ -26,4 +26,6 @@ Telegram: @konstantindimitriev
 (If you don't have Telegram, sorry, I guess we're not meant to be. You can message me on X though — I check it once every six months https://x.com/DimitrievK80301)
 
 # FOR CONSTANTINOPLE 🔥⚔️🛡️
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=kostya-creator&show_icons=true&theme=transparent)
+[![Kostya's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=kostya-creator&theme=github-compact)](https://github.com/kostya-creator)
+
+[![Kostya's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=kostya-creator&theme=github-compact)](https://github.com/kostya-creator)
