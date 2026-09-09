@@ -24,7 +24,8 @@ Contacts:
 Telegram: @konstantindimitriev
 
 (If you don't have Telegram, sorry, I guess we're not meant to be. You can message me on X though — I check it once every six months https://x.com/DimitrievK80301)
-
+<p align="center">
 <img src="./stats.svg" alt="GitHub Stats">
+</p>
 
 
