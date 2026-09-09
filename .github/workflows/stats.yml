@@ -23,7 +23,6 @@ jobs:
           python3 <<'PY'
           import json
           import os
-          import subprocess
           import urllib.request
 
           USERNAME = "kostya-creator"
@@ -31,6 +30,7 @@ jobs:
 
           def gh_api(endpoint):
               url = f"https://api.github.com{endpoint}"
+
               request = urllib.request.Request(
                   url,
                   headers={
@@ -61,7 +61,7 @@ jobs:
           repo_count = len(repos)
           stars = sum(repo["stargazers_count"] for repo in repos)
 
-          # Collect unique contributors and commits
+          # Collect commits and contributors
           contributors = set()
           commits = 0
 
@@ -216,7 +216,7 @@ jobs:
           print(f"Contributors: {contributor_count}")
           PY
 
-           - name: Commit stats
+      - name: Commit stats
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
