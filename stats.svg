@@ -1,0 +1,48 @@
+<svg width="500" height="180" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="180" rx="16" fill="#000000"/>
+
+  <text x="30" y="45"
+    fill="#ffffff"
+    font-family="Arial, sans-serif"
+    font-size="24"
+    font-weight="bold">
+    Kostya's GitHub
+  </text>
+
+  <text x="30" y="85"
+    fill="#999999"
+    font-family="Arial, sans-serif"
+    font-size="16">
+    Repositories
+  </text>
+
+  <text x="30" y="110"
+    fill="#ff4e00"
+    font-family="Arial, sans-serif"
+    font-size="22"
+    font-weight="bold">
+    4
+  </text>
+
+  <text x="250" y="85"
+    fill="#999999"
+    font-family="Arial, sans-serif"
+    font-size="16">
+    Followers
+  </text>
+
+  <text x="250" y="110"
+    fill="#ff4e00"
+    font-family="Arial, sans-serif"
+    font-size="22"
+    font-weight="bold">
+    0
+  </text>
+
+  <text x="30" y="150"
+    fill="#555555"
+    font-family="Arial, sans-serif"
+    font-size="13">
+    Updated automatically
+  </text>
+</svg>
