@@ -24,6 +24,7 @@ jobs:
           import json
           import os
           import urllib.request
+          import urllib.parse
 
           USERNAME = "kostya-creator"
           TOKEN = os.environ["GH_TOKEN"]
@@ -43,13 +44,17 @@ jobs:
               with urllib.request.urlopen(request) as response:
                   return json.load(response)
 
-          # Get all public repositories
+          # --------------------------------------------------
+          # Get repositories
+          # --------------------------------------------------
+
           repos = []
           page = 1
 
           while True:
               data = gh_api(
-                  f"/users/{USERNAME}/repos?type=public&per_page=100&page={page}"
+                  f"/users/{USERNAME}/repos"
+                  f"?type=public&per_page=100&page={page}"
               )
 
               if not data:
@@ -58,24 +63,41 @@ jobs:
               repos.extend(data)
               page += 1
 
-          repo_count = len(repos)
-          stars = sum(repo["stargazers_count"] for repo in repos)
+          # Ignore forked repositories
+          repos = [
+              repo for repo in repos
+              if not repo.get("fork", False)
+          ]
 
-          # Collect commits and contributors
-          contributors = set()
+          repo_count = len(repos)
+
+          # Total stars on own non-fork repositories
+          stars = sum(
+              repo.get("stargazers_count", 0)
+              for repo in repos
+          )
+
+          # --------------------------------------------------
+          # Count ONLY Kostya's commits
+          # --------------------------------------------------
+
           commits = 0
 
           for repo in repos:
               name = repo["name"]
 
-              # Commits
               page = 1
 
               while True:
+                  params = urllib.parse.urlencode({
+                      "author": USERNAME,
+                      "per_page": 100,
+                      "page": page,
+                  })
+
                   try:
                       data = gh_api(
-                          f"/repos/{USERNAME}/{name}/commits"
-                          f"?per_page=100&page={page}"
+                          f"/repos/{USERNAME}/{name}/commits?{params}"
                       )
                   except Exception:
                       break
@@ -84,12 +106,20 @@ jobs:
                       break
 
                   commits += len(data)
-                  page += 1
 
                   if len(data) < 100:
                       break
 
-              # Contributors
+                  page += 1
+
+          # --------------------------------------------------
+          # Find real contributors
+          # --------------------------------------------------
+
+          contributors = set()
+
+          for repo in repos:
+              name = repo["name"]
               page = 1
 
               while True:
@@ -106,102 +136,164 @@ jobs:
 
                   for contributor in data:
                       login = contributor.get("login")
+                      contributor_type = contributor.get("type")
 
-                      if login:
+                      # Ignore:
+                      # - Kostya himself
+                      # - GitHub bots
+                      # - accounts without a login
+                      if (
+                          login
+                          and login.lower() != USERNAME.lower()
+                          and contributor_type == "User"
+                      ):
                           contributors.add(login.lower())
-
-                  page += 1
 
                   if len(data) < 100:
                       break
 
+                  page += 1
+
           contributor_count = len(contributors)
 
+          # --------------------------------------------------
           # Generate SVG
-          svg = f'''<svg width="700" height="300" viewBox="0 0 700 300"
-          xmlns="http://www.w3.org/2000/svg">
+          # --------------------------------------------------
 
-            <rect width="700" height="300" rx="20" fill="#000000"/>
+          svg = f'''<svg
+            width="700"
+            height="300"
+            viewBox="0 0 700 300"
+            xmlns="http://www.w3.org/2000/svg"
+          >
 
-            <text x="35" y="55"
+            <rect
+              width="700"
+              height="300"
+              rx="20"
+              fill="#000000"
+            />
+
+            <text
+              x="35"
+              y="55"
               fill="#ffffff"
               font-family="Arial, Helvetica, sans-serif"
               font-size="25"
-              font-weight="700">
+              font-weight="700"
+            >
               FOR CONSTANTINOPLE 🔥⚔️🛡️
             </text>
 
-            <text x="35" y="90"
+            <text
+              x="35"
+              y="90"
               fill="#666666"
               font-family="Arial, Helvetica, sans-serif"
-              font-size="14">
+              font-size="14"
+            >
               github.com/{USERNAME}
             </text>
 
-            <text x="45" y="145"
+            <!-- Repositories -->
+
+            <text
+              x="45"
+              y="145"
               fill="#777777"
               font-family="Arial, Helvetica, sans-serif"
-              font-size="15">
+              font-size="15"
+            >
               REPOSITORIES
             </text>
 
-            <text x="45" y="180"
+            <text
+              x="45"
+              y="180"
               fill="#ff4e00"
               font-family="Arial, Helvetica, sans-serif"
               font-size="28"
-              font-weight="700">
+              font-weight="700"
+            >
               {repo_count}
             </text>
 
-            <text x="250" y="145"
+            <!-- Stars -->
+
+            <text
+              x="250"
+              y="145"
               fill="#777777"
               font-family="Arial, Helvetica, sans-serif"
-              font-size="15">
+              font-size="15"
+            >
               STARS
             </text>
 
-            <text x="250" y="180"
+            <text
+              x="250"
+              y="180"
               fill="#ff4e00"
               font-family="Arial, Helvetica, sans-serif"
               font-size="28"
-              font-weight="700">
+              font-weight="700"
+            >
               {stars}
             </text>
 
-            <text x="450" y="145"
+            <!-- Commits -->
+
+            <text
+              x="450"
+              y="145"
               fill="#777777"
               font-family="Arial, Helvetica, sans-serif"
-              font-size="15">
-              COMMITS
+              font-size="15"
+            >
+              YOUR COMMITS
             </text>
 
-            <text x="450" y="180"
+            <text
+              x="450"
+              y="180"
               fill="#ff4e00"
               font-family="Arial, Helvetica, sans-serif"
               font-size="28"
-              font-weight="700">
+              font-weight="700"
+            >
               {commits}
             </text>
 
-            <text x="45" y="235"
+            <!-- Contributors -->
+
+            <text
+              x="45"
+              y="235"
               fill="#777777"
               font-family="Arial, Helvetica, sans-serif"
-              font-size="15">
+              font-size="15"
+            >
               CONTRIBUTORS
             </text>
 
-            <text x="45" y="270"
+            <text
+              x="45"
+              y="270"
               fill="#ff4e00"
               font-family="Arial, Helvetica, sans-serif"
               font-size="28"
-              font-weight="700">
+              font-weight="700"
+            >
               {contributor_count}
             </text>
 
-            <text x="450" y="270"
+            <text
+              x="450"
+              y="270"
               fill="#444444"
               font-family="Arial, Helvetica, sans-serif"
-              font-size="12">
+              font-size="12"
+            >
               UPDATED DAILY
             </text>
 
@@ -212,7 +304,7 @@ jobs:
 
           print(f"Repositories: {repo_count}")
           print(f"Stars: {stars}")
-          print(f"Commits: {commits}")
+          print(f"Your commits: {commits}")
           print(f"Contributors: {contributor_count}")
           PY
 
