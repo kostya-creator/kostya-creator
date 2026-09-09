@@ -1,48 +1,88 @@
-<svg width="500" height="180" xmlns="http://www.w3.org/2000/svg">
-  <rect width="500" height="180" rx="16" fill="#000000"/>
+<svg width="700" height="300" viewBox="0 0 700 300"
+xmlns="http://www.w3.org/2000/svg">
 
-  <text x="30" y="45"
+  <rect width="700" height="300" rx="20" fill="#000000"/>
+
+  <text x="35" y="55"
     fill="#ffffff"
-    font-family="Arial, sans-serif"
-    font-size="24"
-    font-weight="bold">
-    Kostya's GitHub
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="25"
+    font-weight="700">
+    FOR CONSTANTINOPLE 🔥⚔️🛡️
   </text>
 
-  <text x="30" y="85"
-    fill="#999999"
-    font-family="Arial, sans-serif"
-    font-size="16">
-    Repositories
+  <text x="35" y="90"
+    fill="#666666"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="14">
+    github.com/kostya-creator
   </text>
 
-  <text x="30" y="110"
+  <text x="45" y="145"
+    fill="#777777"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="15">
+    REPOSITORIES
+  </text>
+
+  <text x="45" y="180"
     fill="#ff4e00"
-    font-family="Arial, sans-serif"
-    font-size="22"
-    font-weight="bold">
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="28"
+    font-weight="700">
     4
   </text>
 
-  <text x="250" y="85"
-    fill="#999999"
-    font-family="Arial, sans-serif"
-    font-size="16">
-    Followers
+  <text x="250" y="145"
+    fill="#777777"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="15">
+    STARS
   </text>
 
-  <text x="250" y="110"
+  <text x="250" y="180"
     fill="#ff4e00"
-    font-family="Arial, sans-serif"
-    font-size="22"
-    font-weight="bold">
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="28"
+    font-weight="700">
     0
   </text>
 
-  <text x="30" y="150"
-    fill="#555555"
-    font-family="Arial, sans-serif"
-    font-size="13">
-    Updated automatically
+  <text x="450" y="145"
+    fill="#777777"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="15">
+    COMMITS
   </text>
+
+  <text x="450" y="180"
+    fill="#ff4e00"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="28"
+    font-weight="700">
+    1165
+  </text>
+
+  <text x="45" y="235"
+    fill="#777777"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="15">
+    CONTRIBUTORS
+  </text>
+
+  <text x="45" y="270"
+    fill="#ff4e00"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="28"
+    font-weight="700">
+    107
+  </text>
+
+  <text x="450" y="270"
+    fill="#444444"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="12">
+    UPDATED DAILY
+  </text>
+
 </svg>
