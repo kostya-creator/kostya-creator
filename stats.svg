@@ -33,8 +33,6 @@
     github.com/kostya-creator
   </text>
 
-  <!-- Repositories -->
-
   <text
     x="45"
     y="145"
@@ -55,8 +53,6 @@
   >
     2
   </text>
-
-  <!-- Stars -->
 
   <text
     x="250"
@@ -79,8 +75,6 @@
     0
   </text>
 
-  <!-- Commits -->
-
   <text
     x="450"
     y="145"
@@ -99,10 +93,8 @@
     font-size="28"
     font-weight="700"
   >
-    14
+    15
   </text>
-
-  <!-- Contributors -->
 
   <text
     x="45"
