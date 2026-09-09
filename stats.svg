@@ -1,87 +1,137 @@
-<svg width="700" height="300" viewBox="0 0 700 300"
-xmlns="http://www.w3.org/2000/svg">
+<svg
+  width="700"
+  height="300"
+  viewBox="0 0 700 300"
+  xmlns="http://www.w3.org/2000/svg"
+>
 
-  <rect width="700" height="300" rx="20" fill="#000000"/>
+  <rect
+    width="700"
+    height="300"
+    rx="20"
+    fill="#000000"
+  />
 
-  <text x="35" y="55"
+  <text
+    x="35"
+    y="55"
     fill="#ffffff"
     font-family="Arial, Helvetica, sans-serif"
     font-size="25"
-    font-weight="700">
+    font-weight="700"
+  >
     FOR CONSTANTINOPLE 🔥⚔️🛡️
   </text>
 
-  <text x="35" y="90"
+  <text
+    x="35"
+    y="90"
     fill="#666666"
     font-family="Arial, Helvetica, sans-serif"
-    font-size="14">
+    font-size="14"
+  >
     github.com/kostya-creator
   </text>
 
-  <text x="45" y="145"
+  <!-- Repositories -->
+
+  <text
+    x="45"
+    y="145"
     fill="#777777"
     font-family="Arial, Helvetica, sans-serif"
-    font-size="15">
+    font-size="15"
+  >
     REPOSITORIES
   </text>
 
-  <text x="45" y="180"
+  <text
+    x="45"
+    y="180"
     fill="#ff4e00"
     font-family="Arial, Helvetica, sans-serif"
     font-size="28"
-    font-weight="700">
-    4
+    font-weight="700"
+  >
+    2
   </text>
 
-  <text x="250" y="145"
+  <!-- Stars -->
+
+  <text
+    x="250"
+    y="145"
     fill="#777777"
     font-family="Arial, Helvetica, sans-serif"
-    font-size="15">
+    font-size="15"
+  >
     STARS
   </text>
 
-  <text x="250" y="180"
+  <text
+    x="250"
+    y="180"
     fill="#ff4e00"
     font-family="Arial, Helvetica, sans-serif"
     font-size="28"
-    font-weight="700">
+    font-weight="700"
+  >
     0
   </text>
 
-  <text x="450" y="145"
+  <!-- Commits -->
+
+  <text
+    x="450"
+    y="145"
     fill="#777777"
     font-family="Arial, Helvetica, sans-serif"
-    font-size="15">
-    COMMITS
+    font-size="15"
+  >
+    YOUR COMMITS
   </text>
 
-  <text x="450" y="180"
+  <text
+    x="450"
+    y="180"
     fill="#ff4e00"
     font-family="Arial, Helvetica, sans-serif"
     font-size="28"
-    font-weight="700">
-    1165
+    font-weight="700"
+  >
+    14
   </text>
 
-  <text x="45" y="235"
+  <!-- Contributors -->
+
+  <text
+    x="45"
+    y="235"
     fill="#777777"
     font-family="Arial, Helvetica, sans-serif"
-    font-size="15">
+    font-size="15"
+  >
     CONTRIBUTORS
   </text>
 
-  <text x="45" y="270"
+  <text
+    x="45"
+    y="270"
     fill="#ff4e00"
     font-family="Arial, Helvetica, sans-serif"
     font-size="28"
-    font-weight="700">
-    107
+    font-weight="700"
+  >
+    0
   </text>
 
-  <text x="450" y="270"
+  <text
+    x="450"
+    y="270"
     fill="#444444"
     font-family="Arial, Helvetica, sans-serif"
-    font-size="12">
+    font-size="12"
+  >
     UPDATED DAILY
   </text>
 
