@@ -15,8 +15,8 @@ Okay, I'm lying I'm 16 (Terminators)
 ### If you're an employer / manager / businessman and you're reading this: 
 # PLEASE HIRE ME 0/7 (0 days working, 7 days resting). I'll even name my son after you. Please 🥺🐧
 
-### Contacts:  
-Telegram: @konstantindimitriev
+## Contacts:  
+### Telegram: @konstantindimitriev
 
 (If you don't have Telegram, sorry, I guess we're not meant to be. You can message me on X though — I check it once every six months https://x.com/DimitrievK80301)
 ---
