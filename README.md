@@ -6,7 +6,7 @@ Okay, enough with the stupid jokes ;)))))))))))))
 ---
 ### My name is the humble Kostya. I'm just getting into software development and trying to figure out what the hell is going on in this universe where I work until 2 AM and then have to go to school in the morning. (God, that's disgusting, just thinking about 9th grade again.)
 
-Other than that, I'm very new to development — only 20 years of vibe coding and 40+ years of programming on an electronic computing machine 🤖
+### Other than that, I'm very new to development — only 20 years of vibe coding and 40+ years of programming on an electronic computing machine 🤖
 
 Okay, I'm lying I'm 16 (Terminators)
 ---
