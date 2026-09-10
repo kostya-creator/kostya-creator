@@ -12,8 +12,6 @@ Okay, I'm lying I'm 16 (Terminators)
 
 ### I used to be into video editing and design, and that's how I realized I absolutely love creating interesting things. But I burned out. (I used to make money freelancing. Ah, those were good times.)
 
-And one more very important piece of information: I'm gay (no).
-
 ### If you're an employer / manager / businessman and you're reading this:
 
 # PLEASE HIRE ME 0/7 (0 days working, 7 days resting). I'll even name my son after you. Please 🥺🐧
